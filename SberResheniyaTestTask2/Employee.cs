@@ -7,7 +7,7 @@ namespace SberResheniyaTestTask2
 {
     class Employee
     {
-        public string Name { get; }
+        public string Name { get; } 
         private Profession _Profession;
         private List<DayOfWeek> _WeekendDay;
         private List<DateTime> _SickLeaveDays;
@@ -40,7 +40,7 @@ namespace SberResheniyaTestTask2
         private List<DateTime> WorkedDays(DateTime startPeriod, DateTime endPeriod)
         {
             List<DateTime> workingDays = new List<DateTime>(); 
-            for (DateTime currecntDay = startPeriod; currecntDay < endPeriod; currecntDay = currecntDay.AddDays(1))
+            for (DateTime currecntDay = startPeriod; currecntDay <= endPeriod; currecntDay = currecntDay.AddDays(1))
             {
                 workingDays.Add(currecntDay);
             }

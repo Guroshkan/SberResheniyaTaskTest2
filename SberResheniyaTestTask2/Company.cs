@@ -64,6 +64,10 @@ namespace SberResheniyaTestTask2
         {
             return this._Workers[employee].DateDismissal;
         }
+        public DateTime GetDayRecruitmentWorker(Employee employee)
+        {
+            return this._Workers[employee].DateRecruitment;
+        }
         public uint GetSalary(Employee employee)
         {
             return this._Salaries[employee];
@@ -71,7 +75,7 @@ namespace SberResheniyaTestTask2
         private List<DateTime> WorkedDays(Employee employee, DateTime startPeriod, DateTime endPeriod)
         {
             List<DateTime> workingDays = new List<DateTime>(); 
-            for (DateTime currecntDay = startPeriod; currecntDay < endPeriod; currecntDay = currecntDay.AddDays(1))
+            for (DateTime currecntDay = startPeriod; currecntDay <= endPeriod; currecntDay = currecntDay.AddDays(1))
             {
                 workingDays.Add(currecntDay);
             }
