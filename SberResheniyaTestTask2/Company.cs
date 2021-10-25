@@ -13,18 +13,18 @@ namespace SberResheniyaTestTask2
         private string _Name;
         private uint _PersentPrepayment;
         private Dictionary<Employee, DateRecruitmentDismissal> _Workers;
-        private bool _UseAdvanceDay;
-        private uint _DayAdvancePayment;
-        private uint _MinWorkedDays;
         private Dictionary<Employee, uint> _Salaries;
         public Dictionary<Profession,List<DayOfWeek>> WeekendDays { get; }
+        public bool UseAdvanceDay { get; }
+        public uint DayAdvancePayment { get; }
+        public uint MinWorkedDays { get; }
         public Company(string name, uint persent, bool useAdvanceDay, uint dayAdvancePayment, uint minWorkedDays, Dictionary<Profession, List<DayOfWeek>> weekendDays)
         {
             this._Name = name;
             this._PersentPrepayment = persent <= MaxPersentAdvancePayment ? persent : MaxPersentAdvancePayment;
-            this._UseAdvanceDay = useAdvanceDay;
-            this._DayAdvancePayment = dayAdvancePayment <= MaxDayAdvancePayment ? dayAdvancePayment : MaxDayAdvancePayment;
-            this._MinWorkedDays = minWorkedDays < MinWorkedDaysValue ? MinWorkedDaysValue :
+            this.UseAdvanceDay = useAdvanceDay;
+            this.DayAdvancePayment = dayAdvancePayment <= MaxDayAdvancePayment ? dayAdvancePayment : MaxDayAdvancePayment;
+            this.MinWorkedDays = minWorkedDays < MinWorkedDaysValue ? MinWorkedDaysValue :
                                     minWorkedDays > MaxDayAdvancePayment ? MaxDayAdvancePayment : minWorkedDays;
             this.WeekendDays = weekendDays;
             this._Workers = new Dictionary<Employee, DateRecruitmentDismissal>();
@@ -47,18 +47,6 @@ namespace SberResheniyaTestTask2
         public bool EmployeeIsWorker(Employee employee)
         {
             return this._Workers.ContainsKey(employee);
-        }
-        public bool IsAdvanceDayUsing()
-        {
-            return this._UseAdvanceDay;
-        }
-        public uint GetDayAdvancePayment()
-        {
-            return this._DayAdvancePayment;
-        }
-        public uint GetMinWorkedDays()
-        {
-            return this._MinWorkedDays;
         }
         public DateTime? GetDayDismissalWorker(Employee employee)
         {

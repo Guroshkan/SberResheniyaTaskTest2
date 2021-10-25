@@ -21,9 +21,9 @@ namespace SberResheniyaTestTask2
                 return Prepayment;
             }
 
-            if (company.IsAdvanceDayUsing())// если аванс назначается в отдельный день - сдвигаем границу до этого дня
+            if (company.UseAdvanceDay)// если аванс назначается в отдельный день - сдвигаем границу до этого дня
             {
-                DateTime newLastDay = new DateTime(lastDayInMonth.Year, lastDayInMonth.Month, ((int)company.GetDayAdvancePayment()));
+                DateTime newLastDay = new DateTime(lastDayInMonth.Year, lastDayInMonth.Month, ((int)company.DayAdvancePayment));
                 lastDayInMonth = newLastDay;
             }
 
@@ -40,8 +40,8 @@ namespace SberResheniyaTestTask2
             }
 
             int countWorkedDays = employee.CountWorkingDays(firstDayInMonth, lastDayInMonth);//количество отработанных дней сотрудником
-            if(countWorkedDays < ((int)company.GetMinWorkedDays())) // если количество отработанных дней меньше необходимого для получения аванса
-            {                                                       // сотрудник его не получает
+            if(countWorkedDays < ((int)company.MinWorkedDays)) // если количество отработанных дней меньше необходимого для получения аванса
+            {                                                  // сотрудник его не получает
                 return Prepayment;
             }
 
